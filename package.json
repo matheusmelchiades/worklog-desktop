@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "electron": "^6.0.2",
-    "global": "^4.4.0"
+    "global": "^4.4.0",
+    "moment": "^2.24.0"
   },
   "devDependencies": {
     "eslint": "^6.1.0",

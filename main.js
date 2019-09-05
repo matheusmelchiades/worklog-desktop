@@ -1,11 +1,14 @@
+const moment = require('moment')
 const { resolve } = require('path')
-const { app, Menu, Tray } = require('electron')
+const { app, Menu, Tray, BrowserWindow } = require('electron')
 const urlIConTimeIsMoney = resolve(
   __dirname,
   'assets',
   'TimeIsMoneyIcon',
   'TimeIsMoneyIcon@2x.png'
 )
+
+const issue = issueFactory()
 
 app.on('ready', () => {
   const tray = new Tray(urlIConTimeIsMoney)
@@ -15,17 +18,12 @@ app.on('ready', () => {
       label: 'Start',
       type: 'radio',
       click: () => {
-        require('child_process').exec('git branch', (err, output) => {
-          if (err) console.log(err)
-
-          const currentBranch = output
-            .trim()
-            .split(' ')
-            .slice(1)
-            .join('')
-
-          console.log(currentBranch)
+        const win = new BrowserWindow({
+          width: 800,
+          height: 600,
+          titleBarStyle: 'hiddenInset'
         })
+
       }
     },
     { label: 'Set issue', type: 'radio' }
@@ -33,3 +31,13 @@ app.on('ready', () => {
 
   tray.setContextMenu(contextMenu)
 })
+
+function issueFactory (name, description, type, start, end) {
+  return {
+    name: '',
+    description: '',
+    type: '',
+    start: '',
+    end: ''
+  }
+}
