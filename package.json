@@ -9,7 +9,7 @@
     "start": "electron main.js"
   },
   "dependencies": {
-    "electron": "^6.0.2",
+    "electron": "^13.6.6",
     "global": "^4.4.0",
     "moment": "^2.24.0"
   },
